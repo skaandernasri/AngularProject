@@ -1,0 +1,36 @@
+<p>reactive-forms works!</p>
+<p>FormControl</p>
+<label >Login</label>
+<input type="text" placeholder="Login" [formControl]="login">
+<label >Password</label>
+<input type="password" placeholder="Password" [formControl]="pwd">
+<input type="submit" value="save" (click)="save()"[disabled]="login.invalid || pwd.invalid">
+<p>FormGroup</p>
+<form class="form-control" [formGroup]="registerForm">
+<label >Cin</label>
+<input class="form-control" type="text" placeholder="cin" formControlName="cin" >
+
+<div class="alert alert-danger" *ngIf="this.registerForm.controls['cin'].invalid &&this.registerForm.controls['cin'].touched">
+    <div *ngIf="this.registerForm.get('cin')?.hasError('required')">cin required</div>
+    <div *ngIf="this.registerForm.get('cin')?.hasError('pattern')">cin doit etre de 8 chiffres</div>
+</div>
+
+<label >name</label>
+<input class="form-control" type="text" placeholder="name" formControlName="name" >
+<div class="alert alert-danger" *ngIf="this.registerForm.controls['name'].invalid &&this.registerForm.controls['name'].touched">
+    <div *ngIf="this.registerForm.get('name')?.hasError('required')">name required</div>
+    <div *ngIf="this.registerForm.get('name')?.hasError('minlength')">name doit etre de longuer 5 au min</div>
+</div>
+<label >Age</label>
+<input class="form-control" class="form-control" type="number" placeholder="age" formControlName="age" >
+<div class="alert alert-danger" *ngIf="this.registerForm.controls['age'].invalid && this.registerForm.controls['age'].touched">
+    <div *ngIf="this.registerForm.get('age')?.hasError('required')">age required</div>
+</div>
+<label >Email</label>
+<input class="form-control" type="text" placeholder="email" formControlName="email" >
+<input class="btn btn-info" type="submit" value="save" (click)="save()" [disabled]="registerForm.invalid">
+<div class="alert alert-danger" *ngIf=" this.registerForm.controls['email'].invalid &&this.registerForm.controls['email'].touched">
+    <div *ngIf="this.registerForm.get('email')?.hasError('required')">email required</div>
+    <div *ngIf="this.registerForm.get('email')?.hasError('email')">doit etre un email</div>
+</div>
+</form>

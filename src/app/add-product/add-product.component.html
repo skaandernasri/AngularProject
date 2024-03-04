@@ -1,0 +1,26 @@
+<form class="form-control" [formGroup]="registerForm">
+    <label >title</label>
+    <input class="form-control" type="text" placeholder="title" formControlName="title" >
+    
+    <div class="alert alert-danger" *ngIf="this.registerForm.controls['title'].invalid &&this.registerForm.controls['title'].touched">
+        <div *ngIf="this.registerForm.get('title')?.hasError('required')">cin required</div>
+        <div *ngIf="this.registerForm.get('title')?.hasError('pattern')">cin doit etre de 8 chiffres</div>4
+        <div *ngIf="this.registerForm.get('title')?.hasError('minlength')">title doit etre de longuer 5 au min</div>
+
+    </div>
+    
+    <label >name</label>
+    <input class="form-control" type="number" placeholder="price" formControlName="price" >
+    <div class="alert alert-danger" *ngIf="this.registerForm.controls['price'].invalid &&this.registerForm.controls['price'].touched">
+        <div *ngIf="this.registerForm.get('price')?.hasError('required')">name required</div>
+        <div *ngIf="this.registerForm.get('price')?.hasError('pattern')">name doit etre de longuer 5 au min</div>
+    </div>
+    <label >Age</label>
+    <input class="form-control" class="form-control" type="number" placeholder="age" formControlName="age" >
+    <div class="alert alert-danger" *ngIf="this.registerForm.controls['quantity'].invalid && this.registerForm.controls['quantity'].touched">
+        <div *ngIf="this.registerForm.get('age')?.hasError('required')">age required</div>
+        <div *ngIf="this.registerForm.get('age')?.hasError('pattern')">name doit etre de longuer 5 au min</div>
+
+    </div>
+
+    </form>

@@ -1,0 +1,56 @@
+{{title}}
+<h1>Liste des produits</h1>
+<input type="number" [(ngModel)]="prix" >
+<table border="2"  >
+    <tr>
+        <th>
+            id
+        </th>
+        <th>
+            title
+        </th>
+        <th>
+            price
+        </th>
+        <th>
+            quantity
+        </th>
+        <th>
+            like
+        </th>
+        <th>
+            action
+        </th>
+    </tr>
+    <tr  *ngFor="let p of listProduct , let i=index" >
+        <ng-container *ngIf="p.price==prix || prix==null">
+      
+        <th>
+            {{p.id}}
+        </th>
+        <th>
+            {{p.title}}
+        </th>
+        <th>
+            {{p.price}}
+        </th>
+        <th>
+            {{p.quantity}}
+        </th>
+        <th>
+            {{p.like}}
+        </th>
+        <th>
+            <input type="submit" value="like" (click)="like(i)">
+        </th>
+        <th>
+            <input [disabled]="p.quantity==0" type="submit" value="buy" (click)="buy(i)">
+        </th>
+        <td><button [routerLink]="['/product',p.id]">show</button></td>
+        </ng-container>
+    </tr>
+</table>
+<input type="submit" value="hi" (click)="hi()">
+<div [style.backgroundColor]="color">propertyBinding</div>
+
+<input type="text" [(ngModel)]="color" >
